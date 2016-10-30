@@ -2,5 +2,5 @@
   "env": {
     "browser": true
   },
-  "extends": ["standard"]
+  "extends": ["standard", "standard-react"]
 }
