@@ -4,7 +4,8 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        Hello world!
+        <h1>Jesse, are you still alive?!!</h1>
+        <p>Yes, yes I am</p>
       </div>
     )
   }
