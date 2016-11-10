@@ -1,4 +1,5 @@
 import React from 'react'
+import humanizeDuration from 'humanize-duration'
 
 import db from './db'
 
@@ -12,6 +13,16 @@ const styles = {
   subheading: {
     'color': '#2020A0'
   }
+}
+
+function calcDuration (utcString) {
+  console.log(utcString)
+  const diff = new Date() - new Date(utcString)
+  return humanizeDuration(diff, {
+    largest: 2,
+    round: true,
+    conjunction: ' and '
+  })
 }
 
 class App extends React.Component {
@@ -28,8 +39,8 @@ class App extends React.Component {
     return (
       <div style={styles.page}>
         <h1 style={styles.heading}>Jesse, are you still alive?!!</h1>
-        <p style={styles.subheading}>{'Yes, yes I am, as at ' + this.state.lastCheckIn}</p>
-        <h2 style={styles.messageHeading}>{'The last message received was at ' + lastMessage.datetime}</h2>
+        <p style={styles.subheading}>{'Yes, yes I am, as of ' + calcDuration(this.state.lastCheckIn) + ' ago.'}</p>
+        <h2 style={styles.messageHeading}>{'The last message received was ' + calcDuration(lastMessage.datetime) + ' ago.'}</h2>
         <p style={styles.message}>{lastMessage.text}</p>
       </div>
     )

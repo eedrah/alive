@@ -55,6 +55,7 @@
   },
   "dependencies": {
     "firebase": "^3.6.0",
+    "humanize-duration": "^3.9.1",
     "radium": "^0.18.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2"
