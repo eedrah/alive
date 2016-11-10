@@ -1,18 +1,21 @@
 import React from 'react'
+import Radium from 'radium'
 import humanizeDuration from 'humanize-duration'
 
 import db from './db'
 
 const styles = {
   page: {
-    'backgroundColor': '#804080'
-  },
-  heading: {
-    'color': '#A02020'
-  },
-  subheading: {
-    'color': '#2020A0'
+    margin: '10px auto',
+    maxWidth: '400px',
+    textAlign: 'center'
   }
+  // heading: {
+  //   'color': '#A02020'
+  // },
+  // subheading: {
+  //   'color': '#2020A0'
+  // }
 }
 
 function calcDuration (utcString) {
@@ -23,6 +26,20 @@ function calcDuration (utcString) {
     round: true,
     conjunction: ' and '
   })
+}
+
+const style = {
+  rules: {
+    'html, body, #app': {
+      height: '100%',
+      margin: 0,
+      padding: 0,
+      backgroundColor: '#EEEEEE'
+    },
+    h1: {
+      margin: 0
+    }
+  }
 }
 
 class App extends React.Component {
@@ -38,9 +55,10 @@ class App extends React.Component {
     const lastMessage = this.state.lastMessages[this.state.lastMessages.length - 1]
     return (
       <div style={styles.page}>
+        <Radium.Style {...style} />
         <h1 style={styles.heading}>Jesse, are you still alive?!!</h1>
         <p style={styles.subheading}>{'Yes, yes I am, as of ' + calcDuration(this.state.lastCheckIn) + ' ago.'}</p>
-        <h2 style={styles.messageHeading}>{'The last message received was ' + calcDuration(lastMessage.datetime) + ' ago.'}</h2>
+        <h2 style={styles.messageHeading}>{'The last message received was ' + calcDuration(lastMessage.datetime) + ' ago. It said:'}</h2>
         <p style={styles.message}>{lastMessage.text}</p>
       </div>
     )
