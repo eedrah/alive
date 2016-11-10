@@ -2,7 +2,7 @@ import firebase from 'firebase/app'
 import 'firebase/database'
 
 firebase.initializeApp({
-  apiKey: '',
+  apiKey: 'AIzaSyCTYjmjGMILGabRxqLqiVYGwdSAgs1p6NA',
   authDomain: 'alive-74979.firebaseapp.com',
   databaseURL: 'https://alive-74979.firebaseio.com',
   storageBucket: '',
