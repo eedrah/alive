@@ -15,22 +15,22 @@ const styles = {
 }
 
 class App extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = { lastCheckIn: null }
-  }
   componentWillMount () {
-    db.ref('lastCheckIn').on('value', (data) => {
-      this.setState({
-        lastCheckIn: data.val()
-      })
+    db.ref('/').on('value', (data) => {
+      this.setState(data.val())
     })
   }
   render () {
+    if (!this.state) {
+      return <h1>Loading...</h1>
+    }
+    const lastMessage = this.state.lastMessages[this.state.lastMessages.length - 1]
     return (
       <div style={styles.page}>
         <h1 style={styles.heading}>Jesse, are you still alive?!!</h1>
         <p style={styles.subheading}>{'Yes, yes I am, as at ' + this.state.lastCheckIn}</p>
+        <h2 style={styles.messageHeading}>{'The last message received was at ' + lastMessage.datetime}</h2>
+        <p style={styles.message}>{lastMessage.text}</p>
       </div>
     )
   }
