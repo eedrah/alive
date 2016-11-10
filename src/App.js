@@ -50,7 +50,12 @@ class App extends React.Component {
   }
   render () {
     if (!this.state) {
-      return <h1>Loading...</h1>
+      return (
+        <div style={styles.page}>
+          <Radium.Style {...style} />
+          <h1 style={styles.heading}>Loading...</h1>
+        </div>
+      )
     }
     const lastMessage = this.state.lastMessages[this.state.lastMessages.length - 1]
     return (
