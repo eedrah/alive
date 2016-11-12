@@ -1,5 +1,6 @@
 import firebase from 'firebase/app'
 import 'firebase/database'
+import 'firebase/auth'
 
 firebase.initializeApp({
   apiKey: 'AIzaSyCTYjmjGMILGabRxqLqiVYGwdSAgs1p6NA',
@@ -9,4 +10,4 @@ firebase.initializeApp({
   messagingSenderId: '1029498420891'
 })
 
-module.exports = firebase.database()
+module.exports = firebase

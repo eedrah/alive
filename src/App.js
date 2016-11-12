@@ -1,7 +1,7 @@
 import React from 'react'
 import Radium from 'radium'
 
-import db from './db'
+import firebase from './firebase'
 import calcDuration from './fns/calcDuration'
 
 const styles = {
@@ -34,7 +34,7 @@ const style = {
 
 class App extends React.Component {
   componentWillMount () {
-    db.ref('/').on('value', (data) => {
+    firebase.database().ref('/').on('value', (data) => {
       this.setState(data.val())
     })
   }
