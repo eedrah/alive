@@ -1,6 +1,8 @@
 import React from 'react'
 import { render } from 'react-dom'
 
+import CheckinApp from './CheckinApp'
+
 // const isProd = process.env.NODE_ENV === 'production'
 
-render((<div>Checkin</div>), document.querySelector('#app'))
+render((<CheckinApp />), document.querySelector('#app'))

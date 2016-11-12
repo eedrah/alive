@@ -49,7 +49,7 @@ class App extends React.Component {
     })
   }
   render () {
-    if (!this.state) {
+    if (!this.state || !this.state.lastCheckIn || !this.state.lastMessages) {
       return (
         <div style={styles.page}>
           <Radium.Style {...style} />
@@ -70,4 +70,4 @@ class App extends React.Component {
   }
 }
 
-module.exports = App
+module.exports = Radium(App)
