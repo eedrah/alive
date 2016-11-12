@@ -1,8 +1,8 @@
 import React from 'react'
 import Radium from 'radium'
-import humanizeDuration from 'humanize-duration'
 
 import db from './db'
+import calcDuration from './fns/calcDuration'
 
 const styles = {
   page: {
@@ -16,16 +16,6 @@ const styles = {
   // subheading: {
   //   'color': '#2020A0'
   // }
-}
-
-function calcDuration (utcString) {
-  console.log(utcString)
-  const diff = new Date() - new Date(utcString)
-  return humanizeDuration(diff, {
-    largest: 2,
-    round: true,
-    conjunction: ' and '
-  })
 }
 
 const style = {
