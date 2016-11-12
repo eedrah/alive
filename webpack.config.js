@@ -5,10 +5,13 @@ var BellOnBundlerErrorPlugin = require('bell-on-bundler-error-plugin')
 var UnusedFilesWebpackPlugin = require('unused-files-webpack-plugin').default
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/index.js'),
+  entry: {
+    index: path.resolve(__dirname, 'src/index.js'),
+    checkin: path.resolve(__dirname, 'src/checkin.js')
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: '[name].js'
   },
   module: {
     preLoaders: [
@@ -40,6 +43,15 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Eedrah',
       filename: 'index.html',
+      chunks: ['index'],
+      inject: false,
+      template: 'node_modules/html-webpack-template/index.ejs',
+      appMountId: 'app'
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Eedrah',
+      filename: 'checkin.html',
+      chunks: ['checkin'],
       inject: false,
       template: 'node_modules/html-webpack-template/index.ejs',
       appMountId: 'app'
