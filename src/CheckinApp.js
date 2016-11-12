@@ -19,13 +19,17 @@ class CheckinApp extends React.Component {
       function onResolve (user) {
         db.ref('/lastCheckIn').set(new Date().toJSON())
         localStorage.password = password
-      },
+        this.setState({ signedIn: true })
+      }.bind(this),
       function onReject (error) {
         console.log(error)
         alert('Login failed!')
         delete localStorage.password
       }
     )
+  }
+  changeMessage (e) {
+    db.ref('/message').set(e.target.value)
   }
   render () {
     if (!this.state || !this.state.lastCheckIn || !this.state.lastMessages) {
@@ -38,6 +42,11 @@ class CheckinApp extends React.Component {
     return (
       <div>
         {'Last checked in ' + calcDuration(this.state.lastCheckIn) + ' ago.'}
+        <textarea
+          disabled={!this.state.signedIn}
+          onChange={this.changeMessage}
+          value={this.state.message}
+        />
       </div>
     )
   }
