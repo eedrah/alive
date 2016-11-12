@@ -3,6 +3,7 @@ import Radium from 'radium'
 
 import firebase from './firebase'
 import calcDuration from './fns/calcDuration'
+import Page from './Page'
 
 const auth = firebase.auth()
 const db = firebase.database()
@@ -32,22 +33,15 @@ class CheckinApp extends React.Component {
     db.ref('/message').set(e.target.value)
   }
   render () {
-    if (!this.state || !this.state.checkinDatetime || !this.state.message) {
-      return (
-        <div>
-          <h1>Loading...</h1>
-        </div>
-      )
-    }
     return (
-      <div>
+      <Page data={this.state}>
         {'Last checked in ' + calcDuration(this.state.checkinDatetime) + ' ago.'}
         <textarea
           disabled={!this.state.signedIn}
           onChange={this.changeMessage}
           value={this.state.message}
         />
-      </div>
+      </Page>
     )
   }
 }
