@@ -1,13 +1,10 @@
+
 import React from 'react'
 import { render } from 'react-dom'
 
 import CheckinApp from './CheckinApp'
+import verifyHttps from './fns/verifyHttps'
 
-const isProd = process.env.NODE_ENV === 'production'
-if (isProd) {
-  if ((window.location.host === 'eedrah.com') && (window.location.protocol !== 'https:')) {
-    window.location.protocol = 'https'
-  }
-}
-
-render((<CheckinApp />), document.querySelector('#app'))
+verifyHttps(() => {
+  render((<CheckinApp />), document.querySelector('#app'))
+})
