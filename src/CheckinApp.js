@@ -17,7 +17,7 @@ class CheckinApp extends React.Component {
     const password = localStorage.password || prompt('Password?')
     auth.signInWithEmailAndPassword(EMAIL, password).then(
       function onResolve (user) {
-        db.ref('/lastCheckIn').set(new Date().toJSON())
+        db.ref('/checkinDatetime').set(new Date().toJSON())
         localStorage.password = password
         this.setState({ signedIn: true })
       }.bind(this),
@@ -32,7 +32,7 @@ class CheckinApp extends React.Component {
     db.ref('/message').set(e.target.value)
   }
   render () {
-    if (!this.state || !this.state.lastCheckIn || !this.state.lastMessages) {
+    if (!this.state || !this.state.checkinDatetime || !this.state.message) {
       return (
         <div>
           <h1>Loading...</h1>
@@ -41,7 +41,7 @@ class CheckinApp extends React.Component {
     }
     return (
       <div>
-        {'Last checked in ' + calcDuration(this.state.lastCheckIn) + ' ago.'}
+        {'Last checked in ' + calcDuration(this.state.checkinDatetime) + ' ago.'}
         <textarea
           disabled={!this.state.signedIn}
           onChange={this.changeMessage}

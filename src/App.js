@@ -39,7 +39,7 @@ class App extends React.Component {
     })
   }
   render () {
-    if (!this.state || !this.state.lastCheckIn || !this.state.lastMessages) {
+    if (!this.state || !this.state.checkinDatetime || !this.state.message) {
       return (
         <div style={styles.page}>
           <Radium.Style {...style} />
@@ -47,14 +47,13 @@ class App extends React.Component {
         </div>
       )
     }
-    const lastMessage = this.state.lastMessages[this.state.lastMessages.length - 1]
     return (
       <div style={styles.page}>
         <Radium.Style {...style} />
         <h1 style={styles.heading}>Jesse, are you still alive?!!</h1>
-        <p style={styles.subheading}>{'Yes, yes I am, as of ' + calcDuration(this.state.lastCheckIn) + ' ago.'}</p>
-        <h2 style={styles.messageHeading}>{'The last message received was ' + calcDuration(lastMessage.datetime) + ' ago. It said:'}</h2>
-        <p style={styles.message}>{lastMessage.text}</p>
+        <p style={styles.subheading}>{'Yes, yes I am, as of ' + calcDuration(this.state.checkinDatetime) + ' ago.'}</p>
+        <h2 style={styles.messageHeading}>The last message received was:</h2>
+        <p style={styles.message}>{this.state.message}</p>
       </div>
     )
   }
