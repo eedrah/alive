@@ -22,7 +22,7 @@ const styles = {
 
 class Page extends React.Component {
   render () {
-    if (!this.props.data || !this.props.data.checkinDatetime || !this.props.data.message) {
+    if (!this.props.data || !this.props.data.checkinDatetime) {
       return (
         <div style={styles.page}>
           <Radium.Style rules={styles.main} />

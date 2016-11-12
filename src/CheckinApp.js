@@ -35,11 +35,16 @@ class CheckinApp extends React.Component {
   render () {
     return (
       <Page data={this.state}>
-        {'Last checked in ' + calcDuration(this.state.checkinDatetime) + ' ago.'}
+        <h1>{'Last checked in ' + calcDuration(this.state.checkinDatetime) + ' ago.'}</h1>
+        <h2>Current message:</h2>
         <textarea
           disabled={!this.state.signedIn}
           onChange={this.changeMessage}
           value={this.state.message}
+          style={{
+            width: '100%',
+            minHeight: '5em'
+          }}
         />
       </Page>
     )
