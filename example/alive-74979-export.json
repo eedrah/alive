@@ -1,10 +1,4 @@
 {
-  "lastCheckIn" : "2016-11-10T08:37:23.948Z",
-  "lastMessages" : [ {
-    "datetime" : "2016-11-10T07:37:23.948Z",
-    "text" : "Test 1"
-  }, {
-    "datetime" : "2016-11-10T07:47:23.948Z",
-    "text" : "Test 2"
-  } ]
+  "checkinDatetime" : "2016-11-12T11:54:48.718Z",
+  "message" : "This is an example"
 }
