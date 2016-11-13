@@ -46,7 +46,11 @@ module.exports = {
       chunks: ['index'],
       inject: false,
       template: 'node_modules/html-webpack-template/index.ejs',
-      appMountId: 'app'
+      appMountId: 'app',
+      googleAnalytics: {
+        trackingId: 'UA-87336843-1',
+        pageViewOnLoad: true
+      }
     }),
     new HtmlWebpackPlugin({
       title: 'Eedrah',
