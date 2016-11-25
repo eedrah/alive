@@ -47,6 +47,7 @@ module.exports = {
       inject: false,
       template: 'node_modules/html-webpack-template/index.ejs',
       appMountId: 'app',
+      mobile: true,
       googleAnalytics: {
         trackingId: 'UA-87336843-1',
         pageViewOnLoad: true
@@ -58,6 +59,7 @@ module.exports = {
       chunks: ['checkin'],
       inject: false,
       template: 'node_modules/html-webpack-template/index.ejs',
+      mobile: true,
       appMountId: 'app'
     })
   ],
