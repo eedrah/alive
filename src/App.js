@@ -38,7 +38,7 @@ class App extends React.Component {
       message = (
         <div>
           <h3>The last message received was:</h3>
-          <p style={{ fontStyle: 'italic' }}>{this.state.message}</p>
+          <p style={{ fontStyle: 'italic', whiteSpace: 'pre' }}>{this.state.message}</p>
         </div>
       )
     } else {
