@@ -30,9 +30,9 @@ class CheckinApp extends React.Component {
       }
     )
   }
-  changeMessage (e) {
+  changeMessage = debounce((e) => {
     db.ref('/message').set(e.target.value)
-  }
+  }, 500, true)
   render () {
     return (
       <Page data={this.state}>
@@ -40,7 +40,7 @@ class CheckinApp extends React.Component {
         <h2>Current message:</h2>
         <textarea
           disabled={!this.state.signedIn}
-          onChange={debounce(this.changeMessage, 500, true)}
+          onChange={this.changeMessage}
           value={this.state.message}
           style={{
             width: '100%',
