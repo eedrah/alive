@@ -1,5 +1,6 @@
 import React from 'react'
 import Radium from 'radium'
+import debounce from 'debounce'
 
 import firebase from './firebase'
 import calcDuration from './fns/calcDuration'
@@ -39,7 +40,7 @@ class CheckinApp extends React.Component {
         <h2>Current message:</h2>
         <textarea
           disabled={!this.state.signedIn}
-          onChange={this.changeMessage}
+          onChange={debounce(this.changeMessage, 500, true)}
           value={this.state.message}
           style={{
             width: '100%',
