@@ -43,7 +43,7 @@ class CheckinApp extends React.Component {
           value={this.state.message}
           style={{
             width: '100%',
-            minHeight: '5em'
+            minHeight: '30em'
           }}
         />
       </Page>
